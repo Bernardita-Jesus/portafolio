@@ -6,21 +6,40 @@ body {
   padding: 50px;
 }
 
+/* --- Galería de imágenes --- */
+.galeria {
+  display: flex;
+  justify-content: center; /* centra las fotos */
+  gap: 20px; /* espacio entre fotos */
+  margin: 30px 0;
+}
+
+.mi-foto {
+  width: 200px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.mi-foto:hover {
+  transform: scale(1.05); /* efecto zoom al pasar el mouse */
+}
+
+/* --- Botón --- */
 button {
-  background-color: #001f3f; /* azul marino */
-  color: #fff9c4; /* texto amarillo pastel */
+  background-color: #001f3f;
+  color: #fff9c4;
   border: none;
   padding: 12px 28px;
   border-radius: 10px;
   cursor: pointer;
   font-size: 18px;
-  margin-top: 20px;
-  justify-content: center; /* Centers horizontally */
-  align-items: center; /* Centers vertically */
   transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color: #003366; /* tono más oscuro */
-  transform: scale(1.05); /* leve aumento al pasar el mouse */
+  background-color: #003366;
+  transform: scale(1.05);
 }
+
