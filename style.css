@@ -1,31 +1,24 @@
-/* style.css */
-
 body {
-  background-color: #FFF8B5; /* amarillo pastel */
-  color: #0B2C5A; /* azul marino */
-  font-family: "Poppins", Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
-  line-height: 1.6;
-}
-
-/* Títulos */
-h1, h2, h3 {
-  color: #002147; /* azul marino más profundo */
+  background-color: #fff9c4; /* amarillo pastel */
+  color: #001f3f; /* azul marino */
+  font-family: Arial, sans-serif;
   text-align: center;
+  padding: 50px;
 }
 
-/* Párrafos */
-p {
-  max-width: 700px;
-  margin: 0 auto;
-  font-size: 1.1em;
+button {
+  background-color: #001f3f; /* azul marino */
+  color: #fff9c4; /* texto amarillo pastel */
+  border: none;
+  padding: 12px 28px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
 }
 
-/* Imágenes */
-img {
-  display: block;
-  margin: 20px auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+button:hover {
+  background-color: #003366; /* tono más oscuro */
+  transform: scale(1.05); /* leve aumento al pasar el mouse */
 }
