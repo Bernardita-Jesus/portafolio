@@ -1,12 +1,18 @@
-# portafolio
-portafolio
+# Portafolio
 
-holaaa
+## Desarrollo del portafolio
 
-https://mateoarce.cl/
+### Referencias para el portafolio
+
+- https://mateoarce.cl/
+
+- https://www.loewe.com/usa/en/stories-projects/thesquash.html
+
+- https://takeawalkonthewildside.rietveldacademie.nl/page/preliminary-programme
+
+- https://brutalistwebsites.com/
 
 para las licencias https://clientes.nic.cl/registrar/agregarUsuario.do
-
 
 ### Proyectos
 
