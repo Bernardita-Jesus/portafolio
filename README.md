@@ -26,3 +26,11 @@ Quiero mostrar mi capacidad de trabajar con diversas técnicas y materiales, inc
 
 - Uso de moldes en yeso y procesos cerámicos variados.
 
+### Proyectos separados por materialidades
+
+Impresión 3D: modelado 3D y producción de piezas.
+
+Madera: CNC y técnicas de plegado.
+
+Cerámica: cerámica tradicional, cerámica de papel y uso de moldes.
+
