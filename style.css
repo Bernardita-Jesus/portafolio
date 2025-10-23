@@ -1,0 +1,31 @@
+/* style.css */
+
+body {
+  background-color: #FFF8B5; /* amarillo pastel */
+  color: #0B2C5A; /* azul marino */
+  font-family: "Poppins", Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+/* Títulos */
+h1, h2, h3 {
+  color: #002147; /* azul marino más profundo */
+  text-align: center;
+}
+
+/* Párrafos */
+p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1em;
+}
+
+/* Imágenes */
+img {
+  display: block;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
