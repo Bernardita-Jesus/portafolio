@@ -6,7 +6,7 @@
 
 - [mateoarce](https://mateoarce.cl/)
 
-Lo que tomo de referencia de la página de Mateo es que es muy dinámica y tiene movimiento; me gusta que te haga sentir parte de la interacción.
+Lo que tomo de referencia de la página de Mateo es que es muy dinámica y tiene movimiento, me gusta que te haga sentir parte de la interacción.
 
 - [Loewe](https://www.loewe.com/usa/en/craft/craft-commitment.html)
 
