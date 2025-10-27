@@ -35,6 +35,9 @@ De este me gusta mucho el recurso de collage que se va moviendo, aunque no para 
 
 <img width="1919" height="966" alt="Captura de pantalla 2025-10-24 102259" src="https://github.com/user-attachments/assets/95aade29-b41d-4c91-a14d-2a390f3c99de" />
 
+- [Pradagroup](https://www.pradagroup.com/en.html)
+
+
 
 - https://brutalistwebsites.com/
 
