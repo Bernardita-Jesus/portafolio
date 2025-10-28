@@ -65,3 +65,7 @@ Madera: CNC y técnicas de plegado.
 
 Cerámica: cerámica tradicional, cerámica de papel y uso de moldes.
 
+### colores
+
+fff9c4 amarillo
+
