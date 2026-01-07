@@ -69,3 +69,14 @@ Cerámica: cerámica tradicional, cerámica de papel y uso de moldes.
 
 fff9c4 amarillo
 
+### cv
+
+#### Software
+
+autocad
+arduino
+bambu estudio
+rhinoceros
+inventor
+fusion360
+kicad
