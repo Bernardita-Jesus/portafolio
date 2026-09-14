@@ -2,25 +2,90 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi primera página</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bernardita Jesús — Portafolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hola, me llamo Bernardita</h1>
-  <p>Estoy aprendiendo HTML para subir mi página a GitHub.</p>
 
-  <div class="galeria">
-    <img src="settings/tmc-sesion02a-foto02.jpeg" alt="Foto 1" class="mi-foto">
-    <img src="settings/tmc-sesion02a-foto02.jpeg" alt="Foto 2" class="mi-foto">
-    <img src="settings/tmc-sesion02a-foto02.jpeg" alt="Foto 3" class="mi-foto">
-  </div>
+  <header>
+    <div class="header-inner">
+      <span class="logo">Bernardita Jesús</span>
+      <nav>
+        <a href="index.html" class="active">Proyectos</a>
+        <a href="about.html">About me</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
 
-  <a href="proyectos/proyecto2.html"><button>Proyectos</button></a>
+  <main class="wrap">
+    <div class="proyectos-grid">
 
-  <button>About me</button>
+      <a class="proyecto-card proyecto-card--contain" href="proyectos/web-de-poemas.html">
+        <img src="settings/web-de-poemas.jpg" alt="Web de poemas">
+        <span class="tag">Poesía · web</span>
+        <h3>Web de poemas</h3>
+      </a>
 
-  <button>Contacto</button>
+      <a class="proyecto-card" href="proyectos/cada-parte-de-mi-es-un-poema.html">
+        <img src="settings/retrato-poema-01.png" alt="Cada parte de mí es un poema">
+        <span class="tag">Web · Poesía visual · Efecto visual · 2026</span>
+        <h3>Cada parte de mí es un poema</h3>
+      </a>
+
+      <a class="proyecto-card" href="proyectos/parlante-plegado.html">
+        <img src="settings/parlante-01.jpg" alt="Parlante plegado">
+        <span class="tag">Fabricación digital · 2025</span>
+        <h3>Parlante plegado</h3>
+      </a>
+
+      <a class="proyecto-card" href="proyectos/maquina-percutora-midi.html">
+        <img src="settings/midi-01.jpg" alt="Máquina percutora MIDI" style="object-position: center 40%;">
+        <span class="tag">Modelado 3D · Fabricación · 2025</span>
+        <h3>Máquina percutora MIDI</h3>
+      </a>
+
+      <a class="proyecto-card" href="proyectos/candela-haustorial.html">
+        <img src="settings/candela-01.jpg" alt="Candela Haustorial">
+        <span class="tag">Cerámica · 2025</span>
+        <h3>Candela Haustorial</h3>
+      </a>
+
+      <a class="proyecto-card" href="proyectos/cajas-y-paneles-popusintesis.html">
+        <img src="settings/popusintes-4.jpg" alt="Cajas y paneles Popusintesis">
+        <span class="tag">Diseño paramétrico · 2026</span>
+        <h3>Cajas y paneles Popusintesis</h3>
+      </a>
+
+      <a class="proyecto-card" href="proyectos/grabaciones-de-sonido.html">
+        <img src="settings/sintes-01.jpeg" alt="Grabaciones de sonido">
+        <span class="tag">Sonido · 2026</span>
+        <h3>Grabaciones de sonido</h3>
+      </a>
+
+      <a class="proyecto-card" href="proyectos/maceta.html">
+        <img src="settings/maceta-01.jpg" alt="Maceta">
+        <span class="tag">Moldaje · Fabricación digital · 2024</span>
+        <h3>Maceta</h3>
+      </a>
+
+      <a class="proyecto-card" href="proyectos/web-mosaicos.html">
+        <img src="settings/mosaico-01.PNG" alt="Web mosaicos">
+        <span class="tag">Web · Arte digital · Efecto visual · 2026</span>
+        <h3>Web mosaicos</h3>
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Bernardita Jesús</p>
+  </footer>
 
 </body>
 </html>
-
