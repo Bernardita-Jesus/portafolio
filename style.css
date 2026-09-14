@@ -311,12 +311,61 @@ h2 {
   font-size: 15px;
 }
 
+.page-title {
+  font-size: clamp(28px, 5vw, 44px);
+  margin: 60px 0 24px;
+}
+
+/* --- Docencia --- */
+.docencia {
+  padding: 0 0 100px;
+  max-width: 700px;
+}
+
+.docencia .intro {
+  color: var(--ink-soft);
+  font-size: 15px;
+  max-width: 60ch;
+  margin-bottom: 16px;
+}
+
+.lista-docencia {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.lista-docencia li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--accent-soft);
+  padding-bottom: 16px;
+}
+
+.item-titulo {
+  font-size: 16px;
+}
+
+.item-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
 /* --- About --- */
 .about-grid {
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 60px;
-  padding: 60px 0 100px;
+  padding: 0 0 100px;
   align-items: start;
 }
 
@@ -361,25 +410,16 @@ h2 {
 }
 
 /* --- Contacto --- */
-.contacto {
-  padding: 100px 0 140px;
-  text-align: left;
-}
-
-.contacto h1 {
-  font-size: clamp(32px, 6vw, 56px);
-  margin: 0 0 40px;
-}
-
 .contacto-links {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
+  margin-top: 4px;
 }
 
 .contacto-links a {
   font-family: var(--font-mono);
-  font-size: clamp(18px, 3vw, 24px);
+  font-size: 15px;
   border-bottom: 1px solid transparent;
   width: fit-content;
 }
