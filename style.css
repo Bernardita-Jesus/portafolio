@@ -24,11 +24,18 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background-color: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 a {
@@ -313,37 +320,47 @@ h2 {
 
 .page-title {
   font-size: clamp(28px, 5vw, 44px);
-  margin: 60px 0 24px;
+  text-align: center;
+  margin: 60px auto 24px;
+  max-width: 20ch;
 }
 
 /* --- Docencia --- */
 .docencia {
-  padding: 0 0 100px;
-  max-width: 700px;
+  padding: 32px 0 100px;
+}
+
+.docencia .page-title {
+  margin: -12px auto 12px;
 }
 
 .docencia .intro {
   color: var(--ink-soft);
   font-size: 15px;
   max-width: 60ch;
-  margin-bottom: 16px;
+  margin: 0 auto 16px;
+  text-align: center;
 }
 
-.lista-docencia {
+.docencia .skills {
+  text-align: center;
+}
+
+.docencia .lista-docencia {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
+  max-width: 700px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.lista-docencia li {
+.docencia .lista-docencia li {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
   border-bottom: 1px solid var(--accent-soft);
   padding-bottom: 16px;
 }
@@ -363,22 +380,36 @@ h2 {
 /* --- About --- */
 .about-grid {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 1.3fr 1fr;
   gap: 60px;
-  padding: 0 0 100px;
+  padding: 32px 0 100px;
   align-items: start;
 }
 
-.about-grid img {
+.about-media {
+  margin-top: 18px;
+}
+
+.about-grid img,
+.about-grid video {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 2 / 1;
   object-fit: cover;
+}
+
+.about-media .skills {
+  margin-top: 32px;
+}
+
+.about-title {
+  font-size: clamp(28px, 5vw, 44px);
+  margin: 0 0 24px;
 }
 
 .about-text p {
   max-width: 60ch;
   color: var(--ink-soft);
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .skills {
