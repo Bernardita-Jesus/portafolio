@@ -25,17 +25,14 @@
 body {
   margin: 0;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  padding-bottom: 72px;
+  box-sizing: border-box;
   background-color: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-}
-
-main {
-  flex: 1 0 auto;
 }
 
 a {
@@ -462,6 +459,10 @@ h2 {
 
 /* --- Footer --- */
 footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   border-top: 1px solid var(--ink);
   padding: 24px 32px;
 }
