@@ -509,6 +509,11 @@ footer p {
       "text"
       "software"
       "contacto";
+    gap: 20px;
+  }
+
+  .about-media {
+    margin-top: 0;
   }
 
   .header-inner {
