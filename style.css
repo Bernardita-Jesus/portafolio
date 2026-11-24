@@ -233,7 +233,7 @@ h2 {
   color: var(--ink-soft);
   display: block;
   text-align: center;
-  margin: 0 auto 40px;
+  margin: 0 auto 48px;
 }
 
 .proyecto-detalle h1 {
@@ -241,6 +241,7 @@ h2 {
   text-align: center;
   margin: -28px auto 12px;
   max-width: 20ch;
+  line-height: 1.15;
 }
 
 .proyecto-detalle img {
@@ -308,12 +309,42 @@ h2 {
   margin-bottom: 0;
 }
 
+/* Postales de proceso: dos columnas, cada fila es un par */
+.postales {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  column-gap: 48px;
+  row-gap: 48px;
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+.descripcion-subtitulo {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.proyecto-detalle .descripcion.postales-intro {
+  margin: 64px auto 64px;
+}
+
+.proyecto-detalle .postales img {
+  aspect-ratio: auto;
+  object-fit: contain;
+  margin-bottom: 0;
+}
+
 .creditos {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--ink-soft);
   text-align: center;
   margin: 12px 0 0;
+}
+
+.postales + .creditos {
+  margin-top: 64px;
 }
 
 .proyecto-detalle .descripcion {
@@ -538,4 +569,144 @@ footer p {
   .docencia .page-title {
     margin-top: 8px;
   }
+}
+
+/* --- Visualizador de postal (Cada espacio de mí es un poema) --- */
+.postal-visor {
+  max-width: 560px;
+  margin: 64px auto 0;
+  perspective: 1600px;
+}
+
+.postal-3d {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  container-type: inline-size;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  cursor: grab;
+  touch-action: pan-y; /* en el celular se puede seguir bajando la página */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.postal-3d.arrastrando {
+  transition: none;
+  cursor: grabbing;
+}
+
+.postal-3d:focus-visible {
+  outline: 2px solid var(--logo-color);
+  outline-offset: 6px;
+}
+
+.postal-cara {
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+.proyecto-detalle .postal-frente img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+  margin: 0;
+  pointer-events: none;
+}
+
+/* Reverso: igual que en la web, poema a la izquierda y datos a la derecha */
+.postal-reverso {
+  transform: rotateY(180deg);
+  background: #DDF1EE;
+  color: #444444;
+  display: flex;
+  gap: 4.5cqw;
+  padding: 6cqw;
+  font-size: 3.4cqw;
+  text-align: left;
+}
+
+.pc-mensaje {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pc-poema {
+  font-size: 0.85em;
+  line-height: 1.3;
+  white-space: pre-line;
+}
+
+.pc-autor {
+  margin-top: auto;
+  padding-top: 1em;
+  font-size: 0.7em;
+  color: #888888;
+}
+
+.pc-division {
+  width: 1px;
+  background: #CCCCCC;
+}
+
+.pc-datos {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7em;
+}
+
+.pc-sello {
+  align-self: flex-end;
+  position: relative;
+  width: 18cqw;
+  height: 18cqw;
+  border: 1.5px solid #AAAAAA;
+  border-radius: 50%;
+  transform: rotate(-8deg);
+  margin-bottom: auto;
+}
+
+.pc-sello::after {
+  content: "";
+  position: absolute;
+  inset: 9%;
+  border: 1px solid #AAAAAA;
+  border-radius: 50%;
+}
+
+.pc-linea {
+  border-bottom: 1px solid #CCCCCC;
+  padding: 0.5em 0 0.3em;
+  display: flex;
+  gap: 0.6em;
+  align-items: baseline;
+}
+
+.pc-etiqueta {
+  font-size: 0.7em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #888888;
+}
+
+.postal-ayuda {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+  text-align: center;
+  margin: 20px 0 0;
+}
+
+.proyecto-detalle .descripcion.intro-ancha {
+  max-width: 72ch;
 }

@@ -27,10 +27,10 @@
     <div class="proyecto-detalle">
       <a class="volver" href="../index.html">← Volver a proyectos</a>
 
-      <h1>Cada espacio de mí es un poema</h1>
+      <h1>Cada espacio de mí<br>es un poema</h1>
       <span class="tag">Web · Poesía visual · Efecto visual · 2026</span>
 
-      <p class="descripcion">Esta web surge de la necesidad de impregnarme visualmente de la poesía. A partir del ejercicio de realizar autorretratos, desarrollé una propuesta visual que posteriormente fue programada en p5.js y convertida en una página web.</p>
+      <p class="descripcion intro-ancha">Esta web surge de la necesidad de impregnarme visualmente de la poesía. Tras una serie de autorretratos, realizados como práctica y ejercicio de autoobservación, desarrollé una propuesta visual que luego programé en p5.js y convertí en una página web, pensada como una herramienta para esconderme y refugiarme bajo la poesía.</p>
 
       <a class="browser-frame" href="https://bernardita-jesus.github.io/web-cada-espacio-de-mi-es-un-poema/" target="_blank" rel="noopener">
         <div class="browser-bar">
@@ -41,8 +41,98 @@
         </div>
         <img src="../settings/cada-espacio-web.jpg" alt="Sitio Cada espacio de mí es un poema">
       </a>
+
+      <p class="descripcion postales-intro">Quienes usan la web pueden crear su propio retrato y compartirlo como postal. Cada postal compartida se puede recorrer y girar; en su reverso aparecen el poema, quién lo envió y desde dónde.</p>
+
+      <!-- Visualizador de una postal: se arrastra para girarla y se toca para darla vuelta -->
+      <div class="postal-visor">
+        <div class="postal-3d" id="postal3d" tabindex="0" role="button"
+             aria-label="Postal: arrastra para girarla, o presiona Enter para darla vuelta">
+          <div class="postal-cara postal-frente">
+            <img src="../settings/cada-espacio-postal-03.jpg" alt="Frente de la postal: autorretrato con un gorro de pudú y el poema escrito dentro de la silueta" draggable="false">
+          </div>
+          <div class="postal-cara postal-reverso" style="background: #F8EDC8;">
+            <div class="pc-mensaje">
+              <div class="pc-poema">Era la paz inmensa
+de una tarde de campo.
+El alma suspendida
+se hallaba en el silencio.
+Ni una voz se escuchaba
+ni un murmullo ni un canto.
+El arroyo sin ruido
+deslizábase lento
+lo mismo que las horas...
+El cielo intenso y puro
+el aire tibio, quieto.</div>
+              <div class="pc-autor">Poema por: Idea Vilariño</div>
+            </div>
+            <div class="pc-division"></div>
+            <div class="pc-datos">
+              <div class="pc-sello"></div>
+              <div class="pc-linea"><span class="pc-etiqueta">De</span>Bernardita Jesús</div>
+              <div class="pc-linea"><span class="pc-etiqueta">Desde</span>Santiago, Chile</div>
+              <div class="pc-linea"><span class="pc-etiqueta">Fecha</span>Sábado 31 de octubre, primavera 2026</div>
+            </div>
+          </div>
+        </div>
+        <p class="postal-ayuda">Arrastra la postal para moverla, o tócala para darla vuelta.</p>
+      </div>
     </div>
   </main>
+
+  <script>
+    // Visualizador de la postal: arrastrar la gira en 3D; al soltar vuelve
+    // a quedar de frente o de reverso (la cara más cercana). Un toque sin
+    // arrastrar (o Enter / espacio) la da vuelta.
+    (function () {
+      const postal = document.getElementById('postal3d');
+      if (!postal) return;
+      let rotY = 0, rotX = 0;
+      let inicio = null;
+
+      const aplicar = () => {
+        postal.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+      };
+      const asentar = () => {
+        postal.classList.remove('arrastrando');
+        rotY = Math.round(rotY / 180) * 180;
+        rotX = 0;
+        aplicar();
+      };
+      const darVuelta = () => {
+        postal.classList.remove('arrastrando');
+        rotY = Math.round(rotY / 180) * 180 + 180;
+        rotX = 0;
+        aplicar();
+      };
+
+      postal.addEventListener('pointerdown', (e) => {
+        inicio = { x: e.clientX, y: e.clientY, rotY, movio: false };
+        postal.setPointerCapture(e.pointerId);
+      });
+      postal.addEventListener('pointermove', (e) => {
+        if (!inicio) return;
+        const dx = e.clientX - inicio.x, dy = e.clientY - inicio.y;
+        if (!inicio.movio && Math.hypot(dx, dy) < 5) return;
+        inicio.movio = true;
+        postal.classList.add('arrastrando');
+        rotY = inicio.rotY + dx * 0.5;
+        rotX = Math.max(-25, Math.min(25, -dy * 0.25));
+        aplicar();
+      });
+      const soltar = () => {
+        if (!inicio) return;
+        const movio = inicio.movio;
+        inicio = null;
+        movio ? asentar() : darVuelta();
+      };
+      postal.addEventListener('pointerup', soltar);
+      postal.addEventListener('pointercancel', () => { if (inicio) { inicio = null; asentar(); } });
+      postal.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); darVuelta(); }
+      });
+    })();
+  </script>
 
   <footer>
     <p>© 2026 Bernardita</p>
