@@ -812,8 +812,8 @@ footer p {
   aspect-ratio: 4 / 3;
   height: auto;
   margin-bottom: 16px;
-  background: #f3f1ec;
-  --poster-color: #f3f1ec;
+  background: transparent; /* sin fondo: la maceta queda sobre el blanco de la página */
+  --poster-color: transparent;
   pointer-events: none; /* el clic pasa a la tarjeta y abre el proyecto */
 }
 

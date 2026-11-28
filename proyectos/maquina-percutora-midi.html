@@ -32,14 +32,28 @@
 
       <p class="descripcion">Este proyecto consistió en desarrollar el modelado 3D, la composición y distribución de los componentes, y la fabricación de las carcasas para una máquina de percusión MIDI. El proyecto fue una comisión para Sokio, destinada a la ópera <em>Splitting Absence</em>, presentada en New Latin Wave, Nueva York.</p>
 
-      <img src="../recursos/midi-01.webp" alt="Máquina percutora MIDI, caja de aluminio con salidas RCA" style="object-position: center 42.8%; aspect-ratio: 10 / 7;">
-      <!-- Fotos secundarias: más pequeñas, lado a lado y alineadas a la izquierda -->
+      <!-- Modelo 3D (convertido desde Rhino a .glb): se gira con el mouse o el dedo y se acerca -->
+      <div class="modelos-3d modelo-unico">
+        <model-viewer src="../recursos/midi-caja.glb" alt="Modelo 3D de la caja Hammond de aluminio con sus componentes"
+                      camera-controls disable-pan auto-rotate autoplay rotation-per-second="12deg" camera-orbit="-35deg 60deg 0.62m"
+                      max-camera-orbit="auto auto 1.2m"
+                      shadow-intensity="0.55" shadow-softness="0.6" exposure="2.6" environment-image="../recursos/luz-estudio.png"
+                      tone-mapping="commerce" interaction-prompt="none" touch-action="pan-y"></model-viewer>
+      </div>
+      <p class="creditos ayuda-3d">Arrastra el modelo para girarlo y haz clic para pausarlo o reanudarlo.</p>
+
+      <!-- Fotos: las tres en pequeño, lado a lado -->
       <div class="fotos-chicas">
+        <img src="../recursos/midi-01.webp" alt="Máquina percutora MIDI, caja de aluminio con salidas RCA" style="object-position: center 40%;">
         <img src="../recursos/midi-03.webp" alt="Máquina percutora MIDI, vista frontal" style="object-position: 35% 30%;">
         <img src="../recursos/midi-07.webp" alt="Máquina percutora MIDI, detalle">
       </div>
     </div>
   </main>
+
+  <!-- Visor de modelos 3D -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+  <script src="../visor-3d.js"></script>
 
   <footer>
     <p>© 2026 Bernardita</p>
