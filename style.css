@@ -885,7 +885,7 @@ footer p {
   font-weight: 700;
   line-height: 1;
   color: var(--ink);
-  margin: 0 0 12px; /* el borde superior de las letras queda a la altura del borde del visor */
+  margin: 0 0 18px; /* el borde superior de las letras queda a la altura del borde del visor */
 }
 
 .texto-lado p { margin: 0; }
