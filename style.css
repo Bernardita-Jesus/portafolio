@@ -738,37 +738,6 @@ footer p {
   .fotos-chicas-columna { gap: 0; }
 }
 
-/* Variante: fotos lado a lado que se van agrandando, alineadas por abajo */
-.fotos-crecientes {
-  align-items: flex-end;
-}
-
-.proyecto-detalle .fotos-crecientes img:nth-child(1) { width: 26%; }
-.proyecto-detalle .fotos-crecientes img:nth-child(2) { width: 38%; }
-.proyecto-detalle .fotos-crecientes img:nth-child(3) { width: 50%; }
-
-@media (max-width: 640px) {
-  .proyecto-detalle .fotos-crecientes img:nth-child(1) { width: 40%; }
-  .proyecto-detalle .fotos-crecientes img:nth-child(2) { width: 60%; }
-}
-
-/* Las fotos crecientes se turnan: la pequeña crece y la grande se achica */
-.proyecto-detalle .fotos-crecientes img {
-  transition: width 1.2s ease;
-}
-
-.proyecto-detalle .fotos-crecientes.turno img:nth-child(1) { width: 38%; }
-.proyecto-detalle .fotos-crecientes.turno img:nth-child(2) { width: 26%; }
-
-@media (max-width: 640px) {
-  .proyecto-detalle .fotos-crecientes.turno img:nth-child(1) { width: 60%; }
-  .proyecto-detalle .fotos-crecientes.turno img:nth-child(2) { width: 40%; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .proyecto-detalle .fotos-crecientes img { transition: none; }
-}
-
 /* Marcador de contenido pendiente (se reemplaza por fotos, video, etc.) */
 .marcador {
   max-width: 820px;
@@ -855,4 +824,16 @@ footer p {
 
 .modelos-3d.modelo-unico model-viewer {
   aspect-ratio: 3 / 2;
+}
+
+/* En el teléfono, las fotos pequeñas van una debajo de la otra, a ancho completo */
+@media (max-width: 640px) {
+  .fotos-chicas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .proyecto-detalle .fotos-chicas img {
+    width: 100%;
+  }
 }
