@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maceta de yeso — Bernardita</title>
+  <title>Maceta rebrote urbano — Bernardita</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
@@ -27,10 +27,10 @@
     <div class="proyecto-detalle">
       <a class="volver" href="../index.html">← Volver a proyectos</a>
 
-      <h1>Maceta de yeso</h1>
+      <h1>Maceta rebrote urbano</h1>
       <span class="tag">Moldaje · Fabricación digital · 2024</span>
 
-      <p class="descripcion">Este proyecto es el resultado de mi ramo de Fabricación Digital, en el que desarrollé una maceta a partir de moldes impresos en 3D, previamente modelados en Rhino.</p>
+      <p class="descripcion">Este proyecto fue desarrollado como evaluación solemne del ramo de Fabricación Digital. Consiste en una maceta inspirada en formas urbanas y geométricas, que primero modelé en Rhino y luego fabriqué a partir de moldes impresos en 3D.</p>
 
       <!-- Modelos 3D (convertidos desde Rhino a .glb): se giran con el mouse o el dedo y se acercan -->
       <div class="modelos-3d modelo-unico">
@@ -42,13 +42,13 @@
                       shadow-intensity="1" exposure="2.6" environment-image="../recursos/luz-estudio.png" shadow-softness="0.6"
                       tone-mapping="commerce" interaction-prompt="none" touch-action="pan-y"></model-viewer>
       </div>
-      <p class="creditos ayuda-3d">Arrastra el modelo para girarlo y haz clic para pausarlo.</p>
+      <p class="creditos ayuda-3d">Arrastra el modelo para girarlo y haz clic para pausarlo o reanudarlo.</p>
 
       <!-- Fotos de la maceta: las tres en pequeño, lado a lado -->
       <div class="fotos-chicas">
-        <img src="../recursos/maceta-01.webp" alt="Maceta de yeso, vista general" style="object-position: 85% center;">
-        <img src="../recursos/maceta-02.webp" alt="Maceta de yeso, vista del vano interior" style="object-position: 60% center;">
-        <img src="../recursos/maceta-04.webp" alt="Maceta de yeso, detalle del escalonado" style="object-position: 85% center;">
+        <img src="../recursos/maceta-01.webp" alt="Maceta rebrote urbano, vista general" style="object-position: 85% center;">
+        <img src="../recursos/maceta-02.webp" alt="Maceta rebrote urbano, vista del vano interior" style="object-position: 60% center;">
+        <img src="../recursos/maceta-04.webp" alt="Maceta rebrote urbano, detalle del escalonado" style="object-position: 85% center;">
       </div>
     </div>
   </main>
@@ -58,7 +58,8 @@
   <script>
     // Arrastrar el modelo lo gira sin detener la animación. Un clic (o toque)
     // sin arrastrar lo pausa: se detienen la animación y el giro automático.
-    // Tras 4 segundos sin interacción, vuelve a animarse solo.
+    // Otro clic lo vuelve a mover; si no, tras 4 segundos sin interacción
+    // vuelve a animarse solo.
     (function () {
       const visor = document.querySelector('.modelos-3d model-viewer');
       if (!visor) return;
@@ -83,7 +84,12 @@
         const movio = Math.hypot(e.clientX - inicio.x, e.clientY - inicio.y) > MOVIMIENTO;
         inicio = null;
         if (movio) return;            // fue un arrastre: solo se giró
-        visor.pause();                // fue un clic: pausa
+        if (temporizador) {           // clic estando en pausa: vuelve a moverse al tiro
+          clearTimeout(temporizador);
+          reanudar();
+          return;
+        }
+        visor.pause();                // clic estando en movimiento: pausa
         visor.autoRotate = false;
         esperarYReanudar();
       });
