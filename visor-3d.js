@@ -7,13 +7,18 @@
   const MOVIMIENTO = 6;     // px: más que esto ya es arrastrar, no clic
   const CERCA_TELEFONO = 0.78; // en el teléfono, la cámara al 78 % de la distancia
   document.querySelectorAll('.modelos-3d model-viewer').forEach((visor) => {
-    // En el teléfono la cámara se acerca (el visor es angosto y el modelo se veía lejos)
     visor.addEventListener('load', () => {
-      if (!window.matchMedia('(max-width: 640px)').matches) return;
       const o = visor.getCameraOrbit();
-      const cerca = parseFloat(visor.dataset.cercaTelefono) || CERCA_TELEFONO; // se puede ajustar por modelo
-      visor.cameraOrbit = `${o.theta}rad ${o.phi}rad ${o.radius * cerca}m`;
-      visor.jumpCameraToGoal();
+      let radio = o.radius;
+      // En el teléfono la cámara se acerca (el visor es angosto y el modelo se veía lejos)
+      if (window.matchMedia('(max-width: 640px)').matches) {
+        const cerca = parseFloat(visor.dataset.cercaTelefono) || CERCA_TELEFONO; // se puede ajustar por modelo
+        radio = o.radius * cerca;
+        visor.cameraOrbit = `${o.theta}rad ${o.phi}rad ${radio}m`;
+        visor.jumpCameraToGoal();
+      }
+      // Solo se puede acercar: la vista inicial es la más lejana permitida
+      visor.maxCameraOrbit = `auto auto ${radio}m`;
     }, { once: true });
     let temporizador = null;
     let inicio = null;
