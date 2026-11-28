@@ -32,8 +32,17 @@
 
       <p class="descripcion">Este proyecto es el resultado de mi ramo de Fabricación Digital, en el que desarrollé una maceta a partir de moldes impresos en 3D, previamente modelados en Rhino.</p>
 
-      <!-- Marcador: aquí irá la previsualización (reemplazar cuando esté lista) -->
-      <div class="marcador marcador-principal">Agregar previsualización</div>
+      <!-- Modelos 3D (convertidos desde Rhino a .glb): se giran con el mouse o el dedo y se acercan -->
+      <div class="modelos-3d modelo-unico">
+        <!-- El molde parte despiezado, se arma alrededor de la maceta y vuelve a separarse (animación en el .glb).
+             La cámara apunta siempre al centro de la maceta (camera-target) y no se puede desplazar (disable-pan). -->
+        <model-viewer src="../recursos/maceta-molde.glb" alt="Modelo 3D del molde: sus piezas se juntan alrededor de la maceta y se vuelven a separar"
+                      camera-controls disable-pan auto-rotate autoplay rotation-per-second="12deg" camera-orbit="-35deg 60deg auto"
+                      camera-target="-0.001m 0.144m 0m"
+                      shadow-intensity="1" exposure="2.6" environment-image="../recursos/luz-estudio.png" shadow-softness="0.6"
+                      tone-mapping="commerce" interaction-prompt="none" touch-action="pan-y"></model-viewer>
+      </div>
+      <p class="creditos ayuda-3d">Arrastra el modelo para girarlo y haz clic para pausarlo.</p>
 
       <!-- Fotos de la maceta: las tres en pequeño, lado a lado -->
       <div class="fotos-chicas">
@@ -43,6 +52,47 @@
       </div>
     </div>
   </main>
+
+  <!-- Visor de modelos 3D -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+  <script>
+    // Arrastrar el modelo lo gira sin detener la animación. Un clic (o toque)
+    // sin arrastrar lo pausa: se detienen la animación y el giro automático.
+    // Tras 4 segundos sin interacción, vuelve a animarse solo.
+    (function () {
+      const visor = document.querySelector('.modelos-3d model-viewer');
+      if (!visor) return;
+      const ESPERA = 4000;      // ms sin interacción antes de reanudar
+      const MOVIMIENTO = 6;     // px: más que esto ya es arrastrar, no clic
+      let temporizador = null;
+      let inicio = null;
+      const reanudar = () => {
+        temporizador = null;
+        visor.play();
+        visor.autoRotate = true;
+      };
+      const esperarYReanudar = () => {
+        clearTimeout(temporizador);
+        temporizador = setTimeout(reanudar, ESPERA);
+      };
+      visor.addEventListener('pointerdown', (e) => {
+        inicio = { x: e.clientX, y: e.clientY };
+      });
+      visor.addEventListener('pointerup', (e) => {
+        if (!inicio) return;
+        const movio = Math.hypot(e.clientX - inicio.x, e.clientY - inicio.y) > MOVIMIENTO;
+        inicio = null;
+        if (movio) return;            // fue un arrastre: solo se giró
+        visor.pause();                // fue un clic: pausa
+        visor.autoRotate = false;
+        esperarYReanudar();
+      });
+      // Si está en pausa y la persona sigue girando o acercando, se reinicia la espera
+      visor.addEventListener('camera-change', (e) => {
+        if (e.detail.source === 'user-interaction' && temporizador) esperarYReanudar();
+      });
+    })();
+  </script>
 
   <footer>
     <p>© 2026 Bernardita</p>

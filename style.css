@@ -811,3 +811,48 @@ footer p {
   padding: 24px;
   border-radius: 0;
 }
+
+/* Visores de modelos 3D (Maceta de yeso) */
+.modelos-3d {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.modelos-3d model-viewer {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  background: #f3f1ec;
+  --poster-color: #f3f1ec;
+}
+
+.ayuda-3d {
+  margin: 16px 0 32px;
+}
+
+@media (max-width: 640px) {
+  .modelos-3d { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* Portada 3D en una tarjeta del inicio: mismo tamaño que las fotos */
+.proyecto-card .portada-3d {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  margin-bottom: 16px;
+  background: #f3f1ec;
+  --poster-color: #f3f1ec;
+  pointer-events: none; /* el clic pasa a la tarjeta y abre el proyecto */
+}
+
+/* Un solo modelo 3D: ocupa todo el ancho, como una foto principal */
+.modelos-3d.modelo-unico {
+  grid-template-columns: 1fr;
+}
+
+.modelos-3d.modelo-unico model-viewer {
+  aspect-ratio: 3 / 2;
+}

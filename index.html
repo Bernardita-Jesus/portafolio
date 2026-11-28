@@ -75,7 +75,11 @@
       </a>
 
       <a class="proyecto-card" href="proyectos/maceta.html">
-        <img src="recursos/maceta-01.webp" alt="Maceta de yeso">
+        <!-- Portada: la maceta en 3D girando (sin controles, para que el clic abra el proyecto) -->
+        <model-viewer class="portada-3d" src="recursos/maceta-yeso.glb" alt="Maceta de yeso en 3D girando"
+                      auto-rotate rotation-per-second="20deg" camera-orbit="145deg 65deg auto"
+                      shadow-intensity="1.4" shadow-softness="0.15" exposure="2.6" environment-image="recursos/luz-estudio.png"
+                      tone-mapping="commerce" interaction-prompt="none"></model-viewer>
         <span class="tag">Moldaje · Fabricación digital · 2024</span>
         <h3>Maceta de yeso</h3>
       </a>
@@ -100,6 +104,9 @@
 
     </div>
   </main>
+
+  <!-- Visor de modelos 3D (portada de Maceta de yeso) -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
 
   <footer>
     <p>© 2026 Bernardita Jesús</p>
