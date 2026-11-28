@@ -837,3 +837,11 @@ footer p {
     width: 100%;
   }
 }
+
+/* En el teléfono el visor 3D es cuadrado, para que el modelo se vea más grande */
+@media (max-width: 640px) {
+  .modelos-3d.modelo-unico model-viewer { aspect-ratio: 1 / 1; }
+}
+
+/* Dos visores 3D seguidos: separación entre ellos */
+.modelo-unico + .ayuda-3d + .modelos-3d.modelo-unico { margin-top: 32px; }

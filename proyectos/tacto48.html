@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tacto48 — Bernardita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="../index.html">Bernardita Jesús</a>
+      <nav>
+        <a href="../index.html" class="active">Proyectos</a>
+        <a href="../docencia.html">Docencia</a>
+        <a href="../about.html">Sobre mí</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="proyecto-detalle">
+      <a class="volver" href="../index.html">← Volver a proyectos</a>
+
+      <h1>Tacto48</h1>
+      <span class="tag">Fabricación digital · Modelado 3D · 2026</span>
+
+      <p class="descripcion">Caja de aluminio Hammond 1590A para el pedal Tacto48, desarrollado durante mi práctica en Piruetas. Modelé con código en OpenSCAD la caja con sus perforaciones para el XLR, el jack y la placa, y plantillas imprimibles en 3D que abrazan la caja para marcar y guiar la broca en cada perforación. Lleva una entrada XLR de la misma serie que el conector de la máquina percutora MIDI, un jack mono de 3,5 mm y la placa Tacto48 diseñada en KiCad, atornillada al fondo.</p>
+
+      <!-- Caja con el conector XLR (exportada desde OpenSCAD a .glb): el conector y sus tornillos se separan y vuelven a montarse -->
+      <div class="modelos-3d modelo-unico">
+        <model-viewer src="../recursos/tacto48.glb" alt="Modelo 3D de la caja de aluminio con el conector XLR hembra, que se separa y vuelve a montarse"
+                      camera-controls disable-pan auto-rotate autoplay rotation-per-second="12deg" camera-orbit="145deg 72deg 0.42m" camera-target="0m 0.012m 0m"
+                      max-camera-orbit="auto auto 1m" shadow-intensity="0.55" shadow-softness="0.6" exposure="2.6"
+                      environment-image="../recursos/luz-estudio-caja.png" tone-mapping="commerce" interaction-prompt="none" touch-action="pan-y"></model-viewer>
+      </div>
+      <p class="creditos ayuda-3d">Arrastra los modelos para girarlos y haz clic para pausarlos o reanudarlos.</p>
+
+      <!-- Plantillas y discos para perforar, listos para imprimir -->
+      <div class="modelos-3d modelo-unico">
+        <model-viewer src="../recursos/tacto48-plantillas.glb" alt="Modelo 3D de las plantillas de perforación del jack y del XLR, con sus discos para marcar el centro"
+                      camera-controls disable-pan auto-rotate rotation-per-second="12deg" camera-orbit="-35deg 55deg auto"
+                      shadow-intensity="0.55" shadow-softness="0.6" exposure="2.6"
+                      environment-image="../recursos/luz-estudio-caja.png" tone-mapping="commerce" interaction-prompt="none" touch-action="pan-y"></model-viewer>
+      </div>
+      <p class="creditos"><a href="https://github.com/Bernardita-Jesus/tacto48" target="_blank" rel="noopener">Ver el repositorio en GitHub</a></p>
+    </div>
+  </main>
+
+  <!-- Visor de modelos 3D -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+  <script src="../visor-3d.js"></script>
+
+  <footer>
+    <p>© 2026 Bernardita</p>
+  </footer>
+
+</body>
+</html>
