@@ -843,5 +843,81 @@ footer p {
   .modelos-3d.modelo-unico model-viewer { aspect-ratio: 1 / 1; }
 }
 
-/* Dos visores 3D seguidos: separación entre ellos */
-.modelo-unico + .ayuda-3d + .modelos-3d.modelo-unico { margin-top: 32px; }
+
+/* Plantillas de Tacto48: dos visores de media columna apilados a la izquierda, solo para mirar,
+   y el texto a su lado, alineado con el primer visor */
+.modelos-3d.modelos-mitad {
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.columna-3d {
+  display: grid;
+  gap: 32px;
+}
+
+.modelos-mitad model-viewer {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  pointer-events: none; /* no se manipulan */
+}
+
+.texto-lado {
+  color: var(--ink-soft);
+  font-size: 15px;
+  /* a la altura del primer visor (proporción 3:2), con el texto en su parte superior */
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 0;
+  aspect-ratio: 3 / 2;
+}
+
+.texto-lado > * {
+  max-width: 50%; /* el texto ocupa la mitad izquierda de su columna */
+}
+
+.texto-lado .subtitulo-lado {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+  margin: 0 0 12px; /* el borde superior de las letras queda a la altura del borde del visor */
+}
+
+.texto-lado p { margin: 0; }
+
+@media (max-width: 640px) {
+  .modelos-3d.modelos-mitad { grid-template-columns: 1fr; }
+  .texto-lado { aspect-ratio: auto; padding-top: 0; }
+  .texto-lado > * { max-width: none; }
+}
+
+/* Botón de enlace (por ejemplo, al repositorio de un proyecto) */
+.boton-centro {
+  text-align: center;
+  margin: 48px 0 0;
+}
+
+.boton {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.boton:hover,
+.boton:focus-visible {
+  background: var(--ink);
+  color: var(--bg);
+}

@@ -30,31 +30,61 @@
       <h1>Tacto48</h1>
       <span class="tag">Fabricación digital · Modelado 3D · 2026</span>
 
-      <p class="descripcion">Caja de aluminio Hammond 1590A para el pedal Tacto48, desarrollado durante mi práctica en Piruetas. Modelé con código en OpenSCAD la caja con sus perforaciones para el XLR, el jack y la placa, y plantillas imprimibles en 3D que abrazan la caja para marcar y guiar la broca en cada perforación. Lleva una entrada XLR de la misma serie que el conector de la máquina percutora MIDI, un jack mono de 3,5 mm y la placa Tacto48 diseñada en KiCad, atornillada al fondo.</p>
+      <p class="descripcion">Tacto48 es un amplificador para micrófono piezoeléctrico, un proyecto que desarrollé durante mi práctica profesional en Piruetas. Para él diagramé la caja de aluminio Hammond 1590A, modelando con código en OpenSCAD la ubicación de las perforaciones para el XLR, el jack y la placa, y diseñé plantillas para perforarla. La caja lleva un conector XLR, un jack mono de 3,5 mm y la placa Tacto48, diseñada en KiCad.</p>
 
       <!-- Caja con el conector XLR (exportada desde OpenSCAD a .glb): el conector y sus tornillos se separan y vuelven a montarse -->
       <div class="modelos-3d modelo-unico">
         <model-viewer src="../recursos/tacto48.glb" alt="Modelo 3D de la caja de aluminio con el conector XLR hembra, que se separa y vuelve a montarse"
-                      camera-controls disable-pan auto-rotate autoplay rotation-per-second="12deg" camera-orbit="145deg 72deg 0.42m" camera-target="0m 0.012m 0m"
+                      camera-controls disable-pan auto-rotate autoplay rotation-per-second="12deg" camera-orbit="145deg 72deg 0.42m" camera-target="0m -0.009m 0m"
                       max-camera-orbit="auto auto 1m" shadow-intensity="0.55" shadow-softness="0.6" exposure="2.6"
                       environment-image="../recursos/luz-estudio-caja.png" tone-mapping="commerce" interaction-prompt="none" touch-action="pan-y"></model-viewer>
       </div>
-      <p class="creditos ayuda-3d">Arrastra los modelos para girarlos y haz clic para pausarlos o reanudarlos.</p>
+      <p class="creditos ayuda-3d">Arrastra el modelo para girarlo y haz clic para pausarlo o reanudarlo.</p>
 
-      <!-- Plantillas y discos para perforar, listos para imprimir -->
-      <div class="modelos-3d modelo-unico">
-        <model-viewer src="../recursos/tacto48-plantillas.glb" alt="Modelo 3D de las plantillas de perforación del jack y del XLR, con sus discos para marcar el centro"
-                      camera-controls disable-pan auto-rotate rotation-per-second="12deg" camera-orbit="-35deg 55deg auto"
-                      shadow-intensity="0.55" shadow-softness="0.6" exposure="2.6"
-                      environment-image="../recursos/luz-estudio-caja.png" tone-mapping="commerce" interaction-prompt="none" touch-action="pan-y"></model-viewer>
+      <!-- Plantillas para perforar sobre la caja cerrada: se calzan y se separan, solo girando (sin controles) -->
+      <div class="modelos-3d modelos-mitad">
+        <div class="columna-3d">
+          <model-viewer src="../recursos/tacto48-plantilla-xlr.glb" alt="Modelo 3D de la caja cerrada con la plantilla del XLR y su disco, que se calzan sobre el costado" autoplay
+                          camera-orbit="-35deg 60deg 0.35m" camera-target="0m 0.006m 0m" max-camera-orbit="auto auto 1m" shadow-intensity="0.55" shadow-softness="0.6" exposure="2.6"
+                          environment-image="../recursos/luz-estudio-caja.png" tone-mapping="commerce" interaction-prompt="none"></model-viewer>
+          <model-viewer src="../recursos/tacto48-plantilla-jack.glb" alt="Modelo 3D de la caja cerrada con la plantilla del jack y su disco, que se calzan sobre el extremo" autoplay
+                          camera-orbit="-35deg 60deg 0.35m" camera-target="0m 0.006m 0m" max-camera-orbit="auto auto 1m" shadow-intensity="0.55" shadow-softness="0.6" exposure="2.6"
+                          environment-image="../recursos/luz-estudio-caja.png" tone-mapping="commerce" interaction-prompt="none"></model-viewer>
+        </div>
+        <div class="texto-lado">
+          <h2 class="subtitulo-lado">Plantillas de perforación</h2>
+          <p>Diseñé en OpenSCAD dos plantillas imprimibles en 3D que abrazan la caja para que no se mueva al taladrar. La primera sirve para marcar el centro de cada perforación y la segunda guía la broca hasta su diámetro final. Las fui iterando hasta la versión 0.0.4, y cada una lleva grabada su versión.</p>
+        </div>
       </div>
-      <p class="creditos"><a href="https://github.com/Bernardita-Jesus/tacto48" target="_blank" rel="noopener">Ver el repositorio en GitHub</a></p>
+
+      <p class="boton-centro"><a class="boton" href="https://github.com/Bernardita-Jesus/tacto48" target="_blank" rel="noopener">Ver el repositorio en GitHub ↗</a></p>
     </div>
   </main>
 
   <!-- Visor de modelos 3D -->
   <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
   <script src="../visor-3d.js"></script>
+  <script>
+    // Las dos plantillas giran y se animan sincronizadas: mismo ángulo y mismo momento de la animación
+    (function () {
+      const visores = [...document.querySelectorAll('.modelos-mitad model-viewer')];
+      if (!visores.length) return;
+      const VEL = 15;                      // grados por segundo
+      const inicio = performance.now();
+      const paso = (ahora) => {
+        const t = (ahora - inicio) / 1000;
+        const theta = -35 + VEL * t;
+        visores.forEach((v) => {
+          if (!v.loaded) return;
+          v.cameraOrbit = theta + 'deg 60deg 0.35m';
+          v.jumpCameraToGoal();
+          if (v.duration) v.currentTime = t % v.duration;
+        });
+        requestAnimationFrame(paso);
+      };
+      requestAnimationFrame(paso);
+    })();
+  </script>
 
   <footer>
     <p>© 2026 Bernardita</p>
